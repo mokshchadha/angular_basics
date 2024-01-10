@@ -1,0 +1,16 @@
+<div>
+    <p>
+        <span>
+            @if(showPassword){
+            {{'Show password'}}
+            }
+            @else {
+            {{'Do not show password'}}
+            }
+        </span>
+        <button (click)="handleClick()">Show password</button>
+        @for(click of clicks; track click){
+        <li>{{click}}</li>
+        }
+    </p>
+</div>
