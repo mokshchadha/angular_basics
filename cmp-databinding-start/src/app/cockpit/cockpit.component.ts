@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -19,9 +25,13 @@ export class CockpitComponent {
     serverContent: string;
   }>();
 
-  onAddServer() {
+  @ViewChild('serverContentRef') serverContentInput: ElementRef;
+
+  onAddServer(inputElement: HTMLInputElement) {
+    const serverName = inputElement.textContent;
+    console.log({ serverName });
     this.serverCreated.emit({
-      serverName: this.newServerName,
+      serverName: serverName,
       serverContent: this.newServerContent,
     });
   }
